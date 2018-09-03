@@ -30,10 +30,8 @@ def getData(filname):
             row = line.split(',')
             Y.append(int(row[0]))
             X.append([int(p) for p in row[1].split()])
-
     X, Y = np.array(X) / 255.0, np.array(Y)
     return X, Y
-
 X, Y = getData(filname)
 num_class = len(set(Y))
 
@@ -44,9 +42,7 @@ def balance_class(Y):
     for i in range(len(num_class)):
         count_class[i] = sum([1 for y in Y if y == i])
     return count_class
-
 balance = balance_class(Y)
-
 N, D = X.shape
 X = X.reshape(N, 48, 48, 1)
 
